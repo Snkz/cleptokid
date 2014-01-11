@@ -1,12 +1,14 @@
 #pragma strict
+private var animator:Animator;
 
 var force = 100;
-var start_x = 0;
-var start_y = 0;
+var start_x;
+var start_y;
 private var lastDirectionFaced:String=("Right");
 
 function Start () {
 	transform.position=Vector2(start_x, start_y);
+	animator = GetComponent("Animator");
 }
 
 function FixedUpdate () {	
@@ -23,16 +25,13 @@ function FixedUpdate () {
 	if(Input.GetKey(KeyCode.W)){
 		rigidbody2D.AddForce(Vector2(0, 1*force));
 		//transform.localScale.y=-1;
-		lastDirectionFaced=("Up");
+		animator.SetInteger("playerState",0);
 	}
 	if(Input.GetKey(KeyCode.S)){
 		rigidbody2D.AddForce(Vector2(0, -1*force));
 		//transform.localScale.y=-1;
-		lastDirectionFaced=("Down");
+		animator.SetInteger("playerState",1);
 	}
-		
-
-
 	
 }
 	
