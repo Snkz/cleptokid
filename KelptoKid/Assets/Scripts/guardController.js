@@ -14,18 +14,19 @@ function Start () {
 
 function FixedUpdate () {	
 	
-	rigidbody2D.AddForce(Vector2(force_x, force_y));
-	random = random * -1
+	rigidbody2D.AddForce(Vector2(force_x, 0));
+	//random = random * -1;
 
 	
 }
 	
 function OnCollisionEnter2D(collision : Collision2D) {
-	if (collision.gameObject.tag == "guard"){
-		new Rect ( 10, 10, 100, 30 ), "GAME OVER" 
+	if (collision.gameObject.tag == "player"){
+		Application.LoadLevel("Dead");
 	}
 
-	if (collision.gameObject.tag == "guard"){
-		rigidbody2D.AddForce(Vector2(-1*force_x, random*force_y));
+	if (collision.gameObject.tag == "wall"){
+		force_x = force_x * -1;
+		rigidbody2D.AddForce(Vector2(force_x, 0));
 	}
 }
