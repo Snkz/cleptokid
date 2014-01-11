@@ -17,6 +17,16 @@ function FixedUpdate () {
 		transform.localScale.x=1;
 		lastDirectionFaced=("Right");
 	}
+	if(Input.GetKey(KeyCode.W)){
+		rigidbody2D.AddForce(Vector2(0,2f));
+		//transform.localScale.y=-1;
+		lastDirectionFaced=("Up");
+	}
+	if(Input.GetKey(KeyCode.S)){
+		rigidbody2D.AddForce(Vector2(0,-2f));
+		//transform.localScale.y=-1;
+		lastDirectionFaced=("Down");
+	}
 		
 
 
